@@ -20,14 +20,14 @@
 		<div id="wrapper">
 			<div id="content">
 				<div class="blog-content">
-					<h4>${postvo.title }</h4>
+					<h4>${postvo.contents }</h4>
 					<p>
 						${postvo.contents }
 					<p>
 				</div>
 				<ul class="blog-list">
 				<c:forEach items="${postList}" var="vo">
-					<li><a href="${pageContext.request.contextPath}/${id}/${vo.categoryNo}/${vo.no}">${vo.title  }</a> <span>${vo.regDate }</span></li>
+					<li><a href="${pageContext.request.contextPath}/${id}/${vo.categoryNo}/${vo.no}">${vo.title}</a> <span>${vo.regDate }</span></li>
 				</c:forEach>
 				</ul>
 			</div>
@@ -43,7 +43,8 @@
 			<h2>카테고리</h2>
 			<ul>
 				<c:forEach items="${categoryList }" var="vo">
-				<li><a href="${pageContext.request.contextPath}/${vo.id}/${vo.no}">${vo.description }</a></li>
+				
+				<li><a href="${pageContext.request.contextPath}/${vo.id}/${vo.no}">${vo.name }</a></li>
 				</c:forEach>
 			</ul>
 		</div>
