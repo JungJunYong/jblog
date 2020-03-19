@@ -47,6 +47,7 @@ public class BlogMainController {
 		
 		List <PostVo> postList = blogMainService.findPostList(no);
 		PostVo vo = blogMainService.findPostview(ptNo);
+		System.out.println(vo);
 		
 		model.addAttribute("id",id.get());
 		model.addAttribute("vo", blogVo);

@@ -7,6 +7,7 @@
 
 	<c:choose>
 		<c:when test="${authUser != null }">
+			<li><a href="${pageContext.request.contextPath}/${authUser.id}">MY BLOG</a></li>
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/user/logout">로그아웃</a></li>
 				<li><a href="${pageContext.request.contextPath}/${authUser.id}/admin/basic">블로그 관리</a></li>
