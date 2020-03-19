@@ -35,7 +35,7 @@ public class AdminService {
 		try {
 			MultipartFile multipartFile = vo.getMultipartFile();
 		if(multipartFile.isEmpty()) {
-			vo.setLogo(adminRepository.basicFind(vo.getId()).getId());
+			vo.setLogo(adminRepository.basicFind(vo.getId()).getLogo());
 			adminRepository.basicUpdate(vo);
 			return url;
 		}
