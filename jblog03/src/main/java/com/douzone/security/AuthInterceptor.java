@@ -20,7 +20,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			return true;
 		}
 		
-		String url = request.getRequestURI();
+		String [] url = request.getRequestURI().split("/");
 		//2. casting
 		HandlerMethod handlerMethod = (HandlerMethod)handler;
 		
@@ -55,14 +55,13 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		
 		//6. 권한(Authorization) 체크를 위해서 @Auth의 role 가져오기("USER","ADMIN")
 		String role = authUser.getId();
-		System.out.println("role:"+ role);
 
 		//7. @Auth의 role이 "USER" 인 경우에는  
 		//   authUser의 role이 "USER" 이든 "ADMIN" 상관이 없음.
-		if(url.contains(role)) {
+		if(url[2].equals(role)) {
 			return true;
 		}else {
-			response.sendRedirect(request.getContextPath()+"/user/login");
+			response.sendRedirect(request.getContextPath()+"/"+role);
 			return false;
 		}
 		// @Auth의 role => "ADMIN"
