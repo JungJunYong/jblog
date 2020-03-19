@@ -20,10 +20,10 @@
 		<div id="wrapper">
 			<div id="content">
 				<div class="blog-content">
-					<h4>${postvo.contents }</h4>
-					<p>
+					<h4>${postvo.title }</h4>
+					<pre>
 						${postvo.contents }
-					<p>
+					<pre>
 				</div>
 				<ul class="blog-list">
 				<c:forEach items="${postList}" var="vo">
