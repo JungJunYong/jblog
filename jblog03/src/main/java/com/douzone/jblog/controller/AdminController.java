@@ -51,8 +51,9 @@ public class AdminController {
 	public String categorydelete(@PathVariable("id")Optional<String> id,
 			@PathVariable("categoryNo")Optional<Long> no,
 			Model model) {
-		Long minNo = adminService.categoryFindOne(id.get());
-		if (no.get() == minNo) {
+		List<CategoryVo> list = adminService.categoryFind(id.get());
+		Long size = (long)list.size();
+		if (size <= 1) {
 			return "redirect:/"+id.get()+"/admin/category/";
 		} else{
 			adminService.categoryDelete(no.get());			
