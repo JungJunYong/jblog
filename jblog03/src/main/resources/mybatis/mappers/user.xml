@@ -10,7 +10,7 @@
 	
 	<insert id="joinblog" parameterType="uservo">
 	<![CDATA[
-		insert into blog values(#{id},'기본','/assets/upimages/202021775927736.jpeg')
+		insert into blog values(#{id},'기본','/assets/images/logo.jpg')
 		]]>
 	</insert>
 	
