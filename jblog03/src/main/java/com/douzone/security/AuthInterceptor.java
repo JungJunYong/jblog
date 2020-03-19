@@ -61,11 +61,13 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		//   authUser의 role이 "USER" 이든 "ADMIN" 상관이 없음.
 		if(url.contains(role)) {
 			return true;
+		}else {
+			response.sendRedirect(request.getContextPath()+"/user/login");
+			return false;
 		}
 		// @Auth의 role => "ADMIN"
 		// authUser의 role => "ADMIN"
 		// 관리자 권한으로 실행
-		return true;
 		
 		
 	}
