@@ -47,4 +47,12 @@ public class BlogMainRepository {
 		return sqlSession.selectList("blogmain.findpostlist", no);
 	}
 
+	public boolean findUser(String id) {
+		int a = sqlSession.selectOne("blogmain.finduser",id);
+		if(a == 1) {
+			return false;
+		}
+		return true;
+	}
+
 }

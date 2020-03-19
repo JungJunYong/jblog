@@ -33,4 +33,8 @@
 	select no,title,contents,reg_date as regDate,category_no as categoryNo from post where category_no = #{no} order by regDate desc	
 	]]>
 	</select>
+	<select id="finduser" parameterType='string' resultType="int" >
+	select count(id) from user where id = #{id}
+	</select>
+	
 </mapper>

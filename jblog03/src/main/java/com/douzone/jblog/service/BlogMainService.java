@@ -40,4 +40,10 @@ public class BlogMainService {
 		return vo.getNo();
 	}
 
+
+	public boolean findUser(String id) {
+		return blogMainRepository.findUser(id);
+		
+	}
+
 }

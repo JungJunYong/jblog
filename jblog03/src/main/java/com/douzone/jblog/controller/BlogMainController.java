@@ -31,7 +31,13 @@ public class BlogMainController {
 			@PathVariable("categoryNo")Optional<Long> categoryNo ,
 			@PathVariable("postNo")Optional<Long> postNo) {
 		Long no,ptNo;
-
+		
+		System.out.println(blogMainService.findUser(id.get()));
+		if(blogMainService.findUser(id.get())) {
+			return "redirect:/";
+		}
+		
+		
 		if(categoryNo.isPresent()) {
 			no = categoryNo.get();
 		}else {
@@ -47,7 +53,7 @@ public class BlogMainController {
 		
 		List <PostVo> postList = blogMainService.findPostList(no);
 		PostVo vo = blogMainService.findPostview(ptNo);
-		System.out.println(vo);
+		System.out.println(id.get());
 		
 		model.addAttribute("id",id.get());
 		model.addAttribute("vo", blogVo);
