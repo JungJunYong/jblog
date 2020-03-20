@@ -9,21 +9,22 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
-	<mvc:annotation-driven />
-	<mvc:default-servlet-handler />
+	
+	<!-- auto proxy -->
+	<aop:aspectj-autoproxy />
 
 	<!-- validator, conversionService, messageConverter를 자동으로 등록 -->
 	<!-- <mvc:annotation-driven> <mvc:argument-resolvers> <bean class="com.douzone.security.AuthUserHandlerMethodArgumentResolver" 
 		/> </mvc:argument-resolvers> </mvc:annotation-driven> -->
 
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
+	
+	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
-
 
 	<context:annotation-config />
 	<context:component-scan
-		base-package="com.douzone.jblog.controller, com.douzone.jblog.exception" />
+		base-package="com.douzone.jblog.controller" />
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass"
@@ -63,6 +64,17 @@
 			<bean class="com.douzone.security.AuthInterceptor" />
 	</mvc:interceptor>
 	</mvc:interceptors>
+	
+	<!-- 6. MessageSource -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages/messages_ko</value>
+			</list>
+		</property>
+	</bean>
+	
 
 	<!-- mvc resources -->
 	<mvc:resources mapping="/assets/upimages/**"
