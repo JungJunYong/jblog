@@ -21,9 +21,7 @@
 			<div id="content">
 				<div class="blog-content">
 					<h4>${postvo.title }</h4>
-					<pre style="font-size:13px">
-						${postvo.contents }
-					</pre>
+					<pre style="font-size:13px">${postvo.contents }</pre>
 				</div>
 				<ul class="blog-list">
 				<c:forEach items="${postList}" var="vo">
