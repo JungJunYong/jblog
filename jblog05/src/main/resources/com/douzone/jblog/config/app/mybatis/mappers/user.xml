@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+	<insert id="join" parameterType="uservo">
+	<![CDATA[
+		insert into user values(#{id},#{name},password(#{password}),now())
+		]]>
+	</insert>
+	
+	<insert id="joinblog" parameterType="uservo">
+	<![CDATA[
+		insert into blog values(#{id},'기본','/assets/images/logo.jpg')
+		]]>
+	</insert>
+	
+	<insert id="joincategory" parameterType="uservo">
+	<![CDATA[
+		insert into category values(null,'기타','기본글입니다.',now(),#{id})
+		]]>
+	</insert>
+	
+	<select id="login" parameterType="uservo" resultType="uservo">
+	<![CDATA[
+		select * from user where id = #{id} and password = password(#{password})
+	]]>
+	</select>
+
+</mapper>
