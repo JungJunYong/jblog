@@ -79,11 +79,9 @@
 				var contextpath = '${pageContext.request.contextPath }';
 				response.data.contextpath = contextpath;
 				response.data.count = 0;
-				console.log(response);
+				response.data.listCount = $(".admin-cat tr").length;
 				var html = listItemTemplate.render(response.data);
-				console.log(html);
-				console.log($('#category-headlist tr'))
-				$("#category-headlist").after(html);
+				$(".admin-cat tr:last-child").after(html);
 				$("#add-form")[0].reset();
 				
 			},

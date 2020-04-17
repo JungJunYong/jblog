@@ -34,7 +34,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/list/add")
-	public JsonResult addCategory(@PathVariable("id")Optional<String> id,@RequestBody CategoryVo vo) {
+	public JsonResult addCategory(@RequestBody CategoryVo vo) {
 		System.out.println(vo);
 		adminService.categoryInsert(vo);
 		return JsonResult.success(vo);
@@ -43,6 +43,11 @@ public class UserController {
 
 	@DeleteMapping("/list/delete/{no}")
 	public JsonResult deleteCategory(@PathVariable("id")Optional<String> id,@PathVariable("no") Long no) {
+		List<CategoryVo> list = adminService.categoryFind(id.get());
+		Long size = (long)list.size();
+		if(size <= 1) {
+			return JsonResult.fail("last category");
+		}
 		adminService.categoryDelete(no);
 		return JsonResult.success(no);
 	}
