@@ -40,8 +40,8 @@ public class AdminRepository {
 		
 	}
 
-	public void categoryDelete(Long no) {
-		sqlSession.delete("admin.categorydelete",no);
+	public int categoryDelete(Long no) {
+		return sqlSession.delete("admin.categorydelete",no);
 		
 	}
 

@@ -93,8 +93,8 @@ public class AdminService {
 
 
 
-	public void categoryDelete(Long no) {
-		adminRepository.categoryDelete(no);
+	public int categoryDelete(Long no) {
+	return adminRepository.categoryDelete(no);
 		
 	}
 

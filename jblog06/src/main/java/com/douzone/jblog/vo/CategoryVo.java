@@ -5,6 +5,9 @@ public class CategoryVo {
 	private String id;
 	private String name;
 	private Long count;
+	private String description;
+	private String regDate;
+	
 	public Long getCount() {
 		return count;
 	}
@@ -17,8 +20,6 @@ public class CategoryVo {
 	public void setName(String name) {
 		this.name = name;
 	}
-	private String description;
-	private String regDate;
 	
 	public Long getNo() {
 		return no;
