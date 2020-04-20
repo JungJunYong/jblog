@@ -97,6 +97,7 @@
 	var categoryDelete = function() {
 		event.preventDefault();
 		var no = $(this).data('no');
+		$(this).parents('tr').remove();
 		$.ajax({
 			url : '${pageContext.request.contextPath }/${vo.id}/api/category/list/delete/'
 					+ no,
@@ -106,9 +107,13 @@
 			data : 'id='+'${authUser.name}',
 			success : function(response) {
 				console.log(response);
+				for(var i = 0,j = 0; i < $('.admin-cat tr td').length; i+=5,j++){
+					$('.admin-cat tr td')[i].innerText = j+1;
+				};
 				
-				$('.admin-cat td').remove();
-				list();
+				
+				//$('.admin-cat td').remove();
+				
 				if (response.result != "success") {
 					console.error(response.message);
 					return;
