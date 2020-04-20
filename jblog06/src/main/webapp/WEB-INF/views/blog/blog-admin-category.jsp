@@ -79,7 +79,7 @@
 				var contextpath = '${pageContext.request.contextPath }';
 				response.data.contextpath = contextpath;
 				response.data.count = 0;
-				response.data.listCount = $(".admin-cat tr").length;
+				response.data.listCount = Number($('.admin-cat tr:last-child td')[0].innerText)+ 1;
 				var html = listItemTemplate.render(response.data);
 				$(".admin-cat tr:last-child").after(html);
 				$("#add-form")[0].reset();
