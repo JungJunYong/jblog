@@ -96,7 +96,6 @@
 	
 	var categoryDelete = function() {
 		event.preventDefault();
-		console.log($(this).data('no'));
 		var no = $(this).data('no');
 		$.ajax({
 			url : '${pageContext.request.contextPath }/${vo.id}/api/category/list/delete/'
