@@ -26,13 +26,17 @@
 from  category a
 left join (select category_no, count(*) as post_count from post, category where post.category_no=category.no group by category_no) b
 	   on a.no = b.category_no
-       where a.id = #{id}]]>
+       where a.id = #{id}
+       ]]>
 	</select>
 	
 	<insert id="categoryinsert" parameterType="categoryvo">
 	<![CDATA[
 	insert into category values(null,#{name},#{description},now(),#{id})
 	]]>
+	<selectKey keyProperty = "no" resultType="long" order="AFTER">
+         select last_insert_id()
+    </selectKey>
 	</insert>
 	
 	<insert id="postwrite" parameterType="postvo">
